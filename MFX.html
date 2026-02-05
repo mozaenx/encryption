@@ -1,0 +1,548 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>HACKED BY MFX CYBER ANONYMOUS</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --neon:#00ffd5;
+    --neon2:#ff006a;
+    --blue:#00aaff;
+    --bg:#000;
+    --txt:#eaffff;
+    --saffron:#ff9933;
+    --white:#ffffff;
+    --green:#138808;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    background:#000;
+    color:var(--txt);
+    font-family:Orbitron, sans-serif;
+    overflow:hidden;
+  }
+
+  /* matrix */
+  #matrix{
+    position:fixed; inset:0;
+    z-index:-10;
+    background:#000;
+  }
+
+  /* fog */
+  .fog{
+    position:fixed; inset:-40px;
+    background:
+      radial-gradient(circle at 20% 30%, rgba(0,255,213,0.12), transparent 55%),
+      radial-gradient(circle at 80% 70%, rgba(255,0,106,0.12), transparent 55%),
+      radial-gradient(circle at 50% 50%, rgba(255,153,51,0.08), transparent 60%);
+    filter: blur(14px);
+    opacity:0.9;
+    z-index:-9;
+    animation:fogMove 12s ease-in-out infinite alternate;
+  }
+  @keyframes fogMove{
+    0%{transform:translate(-10px,-10px) scale(1)}
+    100%{transform:translate(12px,10px) scale(1.05)}
+  }
+
+  /* scanlines */
+  .scanlines{
+    position:fixed; inset:0;
+    background: repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,0.035) 0px,
+      rgba(255,255,255,0.035) 1px,
+      transparent 4px,
+      transparent 7px
+    );
+    opacity:0.2;
+    z-index:-8;
+    pointer-events:none;
+    animation:flicker 2.8s infinite;
+  }
+  @keyframes flicker{
+    0%,100%{opacity:0.16}
+    50%{opacity:0.28}
+  }
+
+  /* sparks */
+  .sparks{
+    position:fixed; inset:0;
+    background:
+      radial-gradient(circle, rgba(255,255,255,0.08) 0 2px, transparent 3px) 0 0/120px 120px,
+      radial-gradient(circle, rgba(0,255,213,0.08) 0 2px, transparent 3px) 60px 40px/160px 160px;
+    opacity:0.22;
+    z-index:-7;
+    animation:sparks 8s linear infinite;
+  }
+  @keyframes sparks{
+    0%{transform:translateY(0)}
+    100%{transform:translateY(120px)}
+  }
+
+  /* layout */
+  .wrap{
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:18px;
+    position:relative;
+  }
+
+  .panel{
+    width:min(1000px, 98%);
+    padding:26px 18px 18px;
+    border-radius:26px;
+    background: rgba(0,0,0,0.62);
+    border:1px solid rgba(0,255,213,0.24);
+    box-shadow: 0 0 55px rgba(0,255,213,0.16);
+    position:relative;
+    overflow:hidden;
+  }
+
+  /* animated neon frame */
+  .panel::before{
+    content:"";
+    position:absolute; inset:-3px;
+    background: conic-gradient(from 180deg,
+      var(--neon2), var(--neon),
+      var(--saffron), var(--white), var(--green),
+      var(--neon2)
+    );
+    filter: blur(18px);
+    opacity:0.22;
+    z-index:-1;
+    animation:spin 6s linear infinite;
+  }
+  @keyframes spin{
+    0%{transform:rotate(0deg)}
+    100%{transform:rotate(360deg)}
+  }
+
+  /* waving indian flag */
+  .flagWrap{
+    width:min(560px, 96%);
+    height:88px;
+    margin: 0 auto 14px;
+    border-radius:18px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,0.12);
+    box-shadow:0 0 28px rgba(255,153,51,0.12), 0 0 28px rgba(19,136,8,0.10);
+    position:relative;
+  }
+  .flag{
+    position:absolute; inset:0;
+    background: linear-gradient(to bottom, var(--saffron) 0 33%, var(--white) 33% 66%, var(--green) 66% 100%);
+    animation: wave 3.2s ease-in-out infinite;
+    transform-origin:left center;
+  }
+
+  /* flag wave shading */
+  .flag::before{
+    content:"";
+    position:absolute; inset:-10px;
+    background:
+      radial-gradient(circle at 30% 30%, rgba(255,255,255,0.35), transparent 45%),
+      radial-gradient(circle at 70% 60%, rgba(0,0,0,0.25), transparent 50%);
+    mix-blend-mode: overlay;
+    animation: wave2 3.2s ease-in-out infinite;
+  }
+
+  /* Ashoka Chakra */
+  .chakra{
+    position:absolute;
+    left:50%; top:50%;
+    transform:translate(-50%,-50%);
+    width:54px;height:54px;
+    border-radius:50%;
+    border:3px solid #0b4ea2;
+    box-shadow:0 0 12px rgba(0,170,255,0.3);
+    animation: chakraSpin 2.6s linear infinite;
+  }
+  .chakra::before{
+    content:"";
+    position:absolute; inset:6px;
+    border-radius:50%;
+    border:2px solid rgba(11,78,162,0.7);
+  }
+  .spokes{
+    position:absolute; inset:0;
+    background:
+      conic-gradient(from 0deg,
+        rgba(11,78,162,0.9) 0 2deg, transparent 2deg 15deg
+      );
+    border-radius:50%;
+    mask: radial-gradient(circle, transparent 0 30%, #000 31%);
+  }
+
+  @keyframes chakraSpin{
+    0%{transform:translate(-50%,-50%) rotate(0deg)}
+    100%{transform:translate(-50%,-50%) rotate(360deg)}
+  }
+
+  @keyframes wave{
+    0%{filter:brightness(1); transform:skewX(0deg)}
+    50%{filter:brightness(1.05); transform:skewX(-2deg)}
+    100%{filter:brightness(1); transform:skewX(0deg)}
+  }
+  @keyframes wave2{
+    0%{transform:translateX(-12px)}
+    50%{transform:translateX(14px)}
+    100%{transform:translateX(-12px)}
+  }
+
+  /* title - epic neon kinetic */
+  .title{
+    margin-top:8px;
+    font-size: clamp(30px, 5vw, 72px);
+    font-weight:900;
+    letter-spacing: 3px;
+    text-transform:uppercase;
+    position:relative;
+    display:inline-block;
+    padding:6px 10px;
+    color:#fff;
+  }
+
+  /* neon glow + animated gradient */
+  .title span{
+    background: linear-gradient(90deg, var(--neon), #ffffff, var(--neon2), var(--neon));
+    background-size: 300% 300%;
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    animation: gradMove 2.4s linear infinite;
+    text-shadow:
+      0 0 12px rgba(0,255,213,0.35),
+      0 0 28px rgba(255,0,106,0.18);
+  }
+  @keyframes gradMove{
+    0%{background-position:0% 50%}
+    100%{background-position:100% 50%}
+  }
+
+  /* glitch layers */
+  .title::before, .title::after{
+    content:attr(data-text);
+    position:absolute;
+    left:0; top:0;
+    width:100%;
+    opacity:0.9;
+    pointer-events:none;
+  }
+  .title::before{
+    transform:translate(2px,-2px);
+    color: var(--neon);
+    clip-path: inset(0 0 0 0);
+    animation: g1 2.4s infinite linear alternate-reverse;
+  }
+  .title::after{
+    transform:translate(-2px,2px);
+    color: var(--neon2);
+    clip-path: inset(0 0 0 0);
+    animation: g2 2.1s infinite linear alternate-reverse;
+  }
+  @keyframes g1{
+    0%{clip-path: inset(10% 0 70% 0)}
+    20%{clip-path: inset(40% 0 20% 0)}
+    40%{clip-path: inset(70% 0 10% 0)}
+    60%{clip-path: inset(25% 0 55% 0)}
+    80%{clip-path: inset(55% 0 25% 0)}
+    100%{clip-path: inset(0% 0 80% 0)}
+  }
+  @keyframes g2{
+    0%{clip-path: inset(70% 0 10% 0)}
+    25%{clip-path: inset(15% 0 65% 0)}
+    50%{clip-path: inset(55% 0 25% 0)}
+    75%{clip-path: inset(30% 0 50% 0)}
+    100%{clip-path: inset(80% 0 0% 0)}
+  }
+
+  .sub{
+    font-family:"Share Tech Mono", monospace;
+    font-size: 14px;
+    opacity:0.95;
+    margin-top:10px;
+    color:#d9ffff;
+    text-shadow:0 0 12px rgba(0,255,213,0.18);
+  }
+
+  /* war scene silhouettes */
+  .scene{
+    width:min(920px, 96%);
+    margin:18px auto 10px;
+    height:160px;
+    position:relative;
+    border-radius:20px;
+    overflow:hidden;
+    border:1px solid rgba(0,255,213,0.14);
+    background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.4));
+  }
+
+  .ground{
+    position:absolute; left:0; right:0; bottom:0;
+    height:54px;
+    background: linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0.3));
+  }
+
+  .soldiers{
+    position:absolute; bottom:14px; left:0;
+    width:100%;
+    height:80px;
+    opacity:0.95;
+    filter: drop-shadow(0 0 10px rgba(0,255,213,0.18));
+  }
+
+  /* jets */
+  .jet{
+    position:absolute;
+    top:18px;
+    width:70px; height:30px;
+    opacity:0.9;
+    filter: drop-shadow(0 0 12px rgba(255,0,106,0.15));
+    animation: fly 6s linear infinite;
+  }
+  .jet.j1{ left:-80px; animation-delay:0s; }
+  .jet.j2{ left:-180px; top:46px; animation-delay:2.2s; opacity:0.75; }
+  @keyframes fly{
+    0%{transform:translateX(0) translateY(0) rotate(-3deg)}
+    50%{transform:translateX(620px) translateY(-8px) rotate(2deg)}
+    100%{transform:translateX(1200px) translateY(0) rotate(-2deg)}
+  }
+
+  /* eagle */
+  .eagle{
+    position:absolute;
+    right:-120px;
+    top:12px;
+    width:120px; height:60px;
+    opacity:0.9;
+    animation:eagleFly 8s linear infinite;
+    filter: drop-shadow(0 0 16px rgba(0,255,213,0.12));
+  }
+  @keyframes eagleFly{
+    0%{transform:translateX(0) translateY(0)}
+    50%{transform:translateX(-520px) translateY(10px)}
+    100%{transform:translateX(-1200px) translateY(-4px)}
+  }
+
+  /* terminal */
+  .terminal{
+    text-align:left;
+    margin: 12px auto 0;
+    width:min(820px, 96%);
+    padding:16px;
+    border-radius:18px;
+    background: rgba(0,0,0,0.58);
+    border:1px solid rgba(0,255,213,0.16);
+    font-family:"Share Tech Mono", monospace;
+    font-size:13px;
+    line-height:1.65;
+    color:#b6fff1;
+    box-shadow: inset 0 0 18px rgba(0,255,213,0.06);
+  }
+
+  .cmd{color:var(--neon)}
+  .warn{color:var(--neon2)}
+  .ok{color:#7CFF7C}
+  .cursor{
+    display:inline-block;width:10px;
+    animation: blink .8s infinite;
+  }
+  @keyframes blink{ 0%,100%{opacity:1} 50%{opacity:0} }
+
+  .footer{
+    margin-top:12px;
+    font-family:"Share Tech Mono", monospace;
+    font-size:12px;
+    opacity:0.75;
+  }
+
+  /* dramatic shake */
+  .shake{
+    animation: shake 0.18s infinite;
+  }
+  @keyframes shake{
+    0%{transform:translate(0,0)}
+    25%{transform:translate(1px,-1px)}
+    50%{transform:translate(-1px,1px)}
+    75%{transform:translate(1px,1px)}
+    100%{transform:translate(-1px,-1px)}
+  }
+
+</style>
+</head>
+<body>
+
+<canvas id="matrix"></canvas>
+<div class="fog"></div>
+<div class="sparks"></div>
+<div class="scanlines"></div>
+
+<div class="wrap">
+  <div class="panel">
+
+    <!-- FLAG -->
+    <div class="flagWrap">
+      <div class="flag"></div>
+      <div class="chakra">
+        <div class="spokes"></div>
+      </div>
+    </div>
+
+    <!-- TITLE -->
+    <h1 class="title" data-text="HACKED BY MFX">
+      <span>HACKED BY MFX</span>
+    </h1>
+
+    <div class="sub">
+      INDIAN CYBER ANONYMOUS 🇮🇳 • SUPREME MFX  • JAI HIND ⚡
+    </div>
+
+    <!-- WAR SCENE -->
+    <div class="scene">
+      <!-- Jets SVG -->
+      <svg class="jet j1" viewBox="0 0 200 80" fill="none">
+        <path d="M10 45 L120 45 L160 25 L190 25 L165 45 L190 55 L160 55 L120 35 L10 35 Z" fill="rgba(0,255,213,0.7)"/>
+      </svg>
+      <svg class="jet j2" viewBox="0 0 200 80" fill="none">
+        <path d="M10 45 L120 45 L160 25 L190 25 L165 45 L190 55 L160 55 L120 35 L10 35 Z" fill="rgba(255,0,106,0.55)"/>
+      </svg>
+
+      <!-- Eagle SVG -->
+      <svg class="eagle" viewBox="0 0 260 120" fill="none">
+        <path d="M10 70 C50 40, 70 40, 110 70 C140 45, 170 45, 210 70 C200 55, 200 45, 220 35 C190 35, 170 40, 130 55 C90 40, 70 35, 40 35 C60 45, 60 55, 50 70 Z"
+              fill="rgba(255,255,255,0.55)"/>
+      </svg>
+
+      <!-- Soldiers SVG -->
+      <svg class="soldiers" viewBox="0 0 1000 200" fill="none">
+        <path d="M30 170 L30 110 L50 90 L70 110 L70 170 Z" fill="rgba(255,255,255,0.16)"/>
+        <circle cx="50" cy="78" r="14" fill="rgba(255,255,255,0.16)"/>
+        <path d="M75 120 L140 95 L150 110 L85 135 Z" fill="rgba(255,255,255,0.16)"/>
+
+        <path d="M200 170 L200 110 L220 90 L240 110 L240 170 Z" fill="rgba(0,255,213,0.18)"/>
+        <circle cx="220" cy="78" r="14" fill="rgba(0,255,213,0.18)"/>
+        <path d="M245 120 L310 95 L320 110 L255 135 Z" fill="rgba(0,255,213,0.18)"/>
+
+        <path d="M370 170 L370 110 L390 90 L410 110 L410 170 Z" fill="rgba(255,0,106,0.16)"/>
+        <circle cx="390" cy="78" r="14" fill="rgba(255,0,106,0.16)"/>
+        <path d="M415 120 L480 95 L490 110 L425 135 Z" fill="rgba(255,0,106,0.16)"/>
+
+        <path d="M540 170 L540 110 L560 90 L580 110 L580 170 Z" fill="rgba(255,255,255,0.14)"/>
+        <circle cx="560" cy="78" r="14" fill="rgba(255,255,255,0.14)"/>
+        <path d="M585 120 L650 95 L660 110 L595 135 Z" fill="rgba(255,255,255,0.14)"/>
+
+        <path d="M710 170 L710 110 L730 90 L750 110 L750 170 Z" fill="rgba(0,255,213,0.14)"/>
+        <circle cx="730" cy="78" r="14" fill="rgba(0,255,213,0.14)"/>
+        <path d="M755 120 L820 95 L830 110 L765 135 Z" fill="rgba(0,255,213,0.14)"/>
+
+        <path d="M880 170 L880 110 L900 90 L920 110 L920 170 Z" fill="rgba(255,0,106,0.14)"/>
+        <circle cx="900" cy="78" r="14" fill="rgba(255,0,106,0.14)"/>
+        <path d="M925 120 L990 95 L1000 110 L935 135 Z" fill="rgba(255,0,106,0.14)"/>
+      </svg>
+
+      <div class="ground"></div>
+    </div>
+
+    <!-- TERMINAL -->
+    <div class="terminal" id="terminal">
+      <div><span class="cmd">root@indian-cyber</span>:~$ boot --war-mode</div>
+    </div>
+
+    <div class="footer">
+      "We are the shield of the nation in digital war." • 🇮🇳 JAI HIND
+    </div>
+
+  </div>
+</div>
+
+<script>
+  // MATRIX RAIN
+  const canvas = document.getElementById("matrix");
+  const ctx = canvas.getContext("2d");
+
+  let w, h;
+  function resize(){
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+  }
+  window.addEventListener("resize", resize);
+  resize();
+
+  const letters = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&@";
+  const fontSize = 16;
+  let columns = Math.floor(w / fontSize);
+  let drops = Array(columns).fill(1);
+
+  function matrix(){
+    ctx.fillStyle = "rgba(0,0,0,0.08)";
+    ctx.fillRect(0, 0, w, h);
+
+    ctx.font = fontSize + "px Share Tech Mono";
+    for(let i=0;i<drops.length;i++){
+      const text = letters[Math.floor(Math.random()*letters.length)];
+      ctx.fillStyle = "rgba(0,255,213,0.75)";
+      ctx.fillText(text, i*fontSize, drops[i]*fontSize);
+
+      if(drops[i]*fontSize > h && Math.random() > 0.975) drops[i] = 0;
+      drops[i]++;
+    }
+    requestAnimationFrame(matrix);
+  }
+  matrix();
+
+  // TERMINAL LINES
+  const terminal = document.getElementById("terminal");
+  const lines = [
+    "root@indian-cyber:~$ initialize --nation-shield",
+    "NATION SHIELD: ACTIVE ✔",
+    "root@indian-cyber:~$ launch --air-force",
+    "AIR FORCE: JETS DEPLOYED ✈",
+    "root@indian-cyber:~$ deploy --soldiers",
+    "GROUND UNIT: READY 🪖",
+    "root@indian-cyber:~$ activate --eagle-eye",
+    "EAGLE EYE: SURVEILLANCE ONLINE 🦅",
+    "root@indian-cyber:~$ firewall --military-grade",
+    "FIREWALL: MILITARY ENCRYPTION ENABLED ✔",
+    "root@indian-cyber:~$ broadcast --message",
+    "\"INDIA NEVER BOWS.\" 🇮🇳",
+    "root@indian-cyber:~$ exit"
+  ];
+
+  let i=0;
+  function addLine(){
+    if(i >= lines.length){
+      terminal.innerHTML += `<div><span class="cmd">root@indian-cyber</span>:~$ <span class="cursor">|</span></div>`;
+      return;
+    }
+    const text = lines[i];
+    const div = document.createElement("div");
+
+    if(text.includes("✔")) div.innerHTML = `<span class="ok">${text}</span>`;
+    else div.innerHTML = text;
+
+    terminal.appendChild(div);
+    terminal.scrollTop = terminal.scrollHeight;
+    i++;
+    setTimeout(addLine, 650);
+  }
+  setTimeout(addLine, 900);
+
+  // dramatic shake at war mode
+  setTimeout(()=>{
+    document.querySelector(".panel").classList.add("shake");
+    setTimeout(()=>document.querySelector(".panel").classList.remove("shake"), 900);
+  }, 4200);
+</script>
+
+</body>
+</html>
